@@ -1,4 +1,4 @@
-# KChief
+# NMEA
 
 [![Build Status](https://dolittle.visualstudio.com/Dolittle%20open-source%20repositories/_apis/build/status/dolittle-timeseries.KChief?branchName=master)](https://dolittle.visualstudio.com/Dolittle%20open-source%20repositories/_build/latest?definitionId=12&branchName=master)
 
@@ -58,13 +58,13 @@ In your `deployment.json` file, you will need to add the module. For more detail
 
 ```json
 "modules": {
-    "Dolittle.TimeSeries.KChief": {
+    "Dolittle.TimeSeries.NMEA": {
     "version": "1.0",
     "type": "docker",
     "status": "running",
     "restartPolicy": "always",
     "settings": {
-        "image": "dolittle/timeseries-kchief",
+        "image": "dolittle/timeseries-nmea",
         "createOptions": {
         "HostConfig": {}
     }
