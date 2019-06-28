@@ -50,6 +50,12 @@ In addition to this there is a couple of Debug launch settings set up as well to
 
 Open up the [.sln](./KChief.sln) file at the root of the project.
 
+## Resources
+
+Based on documentation found here:
+
+- http://www.tronico.fi/OH6NT/docs/NMEA0183.pdf
+
 ## Deploying
 
 ### Module
