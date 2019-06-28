@@ -5,7 +5,7 @@
 using System.Collections.Generic;
 using Dolittle.TimeSeries.DataTypes;
 
-namespace Dolittle.TimeSeries.NMEA.Formats
+namespace Dolittle.TimeSeries.NMEA.SentenceFormats
 {
     /// <summary>
     /// Represents the format of "Recommended Minimum Navigation Information"
