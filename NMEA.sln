@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMEA", "Source\NMEA.csproj", "{B6EF037A-C811-4665-AA5F-0691AEB68411}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMEA", "Specifications\NMEA.csproj", "{3729F3D6-3568-4016-858E-7965F1F02205}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMEA.Specs", "Specifications\NMEA.csproj", "{3729F3D6-3568-4016-858E-7965F1F02205}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
