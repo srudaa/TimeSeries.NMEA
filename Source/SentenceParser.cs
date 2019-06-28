@@ -36,6 +36,13 @@ namespace Dolittle.TimeSeries.NMEA
         }
 
         /// <inheritdoc/>
+        public string GetIdentifierFor(string sentence)
+        {
+            ThrowIfSentenceIsInvalid(sentence);
+            return sentence.Substring(1, 5);
+        }
+
+        /// <inheritdoc/>
         public object Parse(string sentence)
         {            
             ThrowIfSentenceIsInvalid(sentence);

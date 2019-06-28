@@ -18,6 +18,13 @@ namespace Dolittle.TimeSeries.NMEA
         bool CanParse(string sentence);
 
         /// <summary>
+        /// Get the unique sentence identifier for the sentence
+        /// </summary>
+        /// <param name="sentence">The sentence to get for</param>
+        /// <returns>Unique identifier for the sentence</returns>
+        string GetIdentifierFor(string sentence);
+
+        /// <summary>
         /// Parse a parseable sentence into its target object
         /// </summary>
         /// <param name="sentence">Sentence to parse</param>
