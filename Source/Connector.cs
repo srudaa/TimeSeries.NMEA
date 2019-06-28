@@ -65,7 +65,8 @@ namespace Dolittle.TimeSeries.NMEA
                                 if (_parser.CanParse(sentence))
                                 {
                                     var output = _parser.Parse(sentence);
-                                    DataReceived("SOMETHING",output, Timestamp.UtcNow);
+                                    var identifier = _parser.GetIdentifierFor(sentence);
+                                    DataReceived(identifier,output, Timestamp.UtcNow);
                                 }
 
                                 sentenceBuilder = new StringBuilder();
