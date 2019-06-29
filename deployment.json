@@ -39,7 +39,7 @@
                         "status": "running",
                         "restartPolicy": "always",
                         "settings": {
-                            "image": "dolittle/timeseries-nmea",
+                            "image": "shipos/timeseries-nmea",
                             "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"1883/tcp\":[{\"HostPort\":\"1883\"}]}}}"
                         }
                     }
@@ -50,7 +50,7 @@
             "properties.desired": {
                 "schemaVersion": "1.0",
                 "routes": {
-                    "KChiefToUpstream": "FROM /messages/modules/NMEA/output INTO $upstream"
+                    "NMEAToUpstream": "FROM /messages/modules/NMEA/output INTO $upstream"
                 },
                 "storeAndForwardConfiguration": {
                     "timeToLiveSecs": 7200
