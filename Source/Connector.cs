@@ -19,7 +19,7 @@ namespace Dolittle.TimeSeries.NMEA
         public event DataReceived DataReceived = (tag, value, timestamp) => { };
         readonly ConnectorConfiguration _configuration;
         readonly ILogger _logger;
-        readonly ISentenceParser _parser;      
+        readonly ISentenceParser _parser;
 
         /// <summary>
         /// Initializes a new instance of <see cref="Connector"/>
@@ -47,6 +47,7 @@ namespace Dolittle.TimeSeries.NMEA
             using(var stream = client.GetStream())
             {
                 var started = false;
+                var skip = false;
                 var sentenceBuilder = new StringBuilder();
                 for (;;)
                 {
@@ -61,12 +62,14 @@ namespace Dolittle.TimeSeries.NMEA
                             break;
                         case '\n':
                             {
+                                skip = true;
                                 var sentence = sentenceBuilder.ToString();
-                                if (_parser.CanParse(sentence))
+                                var canParse = _parser.CanParse(sentence);
+                                if (canParse)
                                 {
                                     var output = _parser.Parse(sentence);
                                     var identifier = _parser.GetIdentifierFor(sentence);
-                                    DataReceived(identifier,output, Timestamp.UtcNow);
+                                    DataReceived(identifier, output, Timestamp.UtcNow);
                                 }
 
                                 sentenceBuilder = new StringBuilder();
@@ -74,9 +77,10 @@ namespace Dolittle.TimeSeries.NMEA
                             }
                             break;
                     }
-                    if (started) sentenceBuilder.Append(character);
+                    if (started && !skip) sentenceBuilder.Append(character);
+                    skip = false;
                 }
             }
         }
-   }
+    }
 }
