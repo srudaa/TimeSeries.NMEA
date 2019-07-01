@@ -8,7 +8,7 @@
         "processId": "${command:pickProcess}"
       },
       {
-        "name": "IdentityMapper Remote Debug (.NET Core)",
+        "name": "NMEA Remote Debug (.NET Core)",
         "type": "coreclr",
         "request": "attach",
         "processId": "${command:pickRemoteProcess}",
@@ -17,7 +17,7 @@
           "pipeArgs": [
             "exec",
             "-i",
-            "Modbus",
+            "NMEA",
             "sh",
             "-c"
           ],
@@ -34,7 +34,7 @@
         "name": "IdentityMapper Local Debug (.NET Core)",
         "type": "coreclr",
         "request": "launch",
-        "program": "${workspaceRoot}/Source/bin/Debug/netcoreapp2.1/Dolittle.TimeSeries.Modbus.dll",
+        "program": "${workspaceRoot}/Source/bin/Debug/netcoreapp2.1/Dolittle.TimeSeries.NMEA.dll",
         "args": [],
         "cwd": "${workspaceRoot}/Source",
         "internalConsoleOptions": "openOnSessionStart",
