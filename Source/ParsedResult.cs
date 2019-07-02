@@ -2,31 +2,33 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System.Collections.Generic;
 
 namespace Dolittle.TimeSeries.NMEA
 {
-
     /// <summary>
-    /// Defines how a format for a sentence is to be parsed
+    /// Represents a parsed result
     /// </summary>
-    public interface ISentenceFormat
+    public class ParsedResult
     {
         /// <summary>
-        /// Gets the talker of the sentence
+        /// Initializes a new instance of <see cref="ParsedResult"/>
         /// </summary>
-        string Talker { get; }
+        /// <param name="type">Type string representing the result</param>
+        /// <param name="result">The actual result</param>
+        public ParsedResult(string type, object result)
+        {
+            Type = type;
+            Result = result;
+        }
 
         /// <summary>
-        /// Gets the setence identifier 
+        /// Gets the type string
         /// </summary>
-        string Identitifer { get; }
+        public string Type { get; }
 
         /// <summary>
-        /// Parse the sentence values and return an instance of a type representing it
+        /// Gets the result
         /// </summary>
-        /// <param name="values">The values to parse</param>
-        /// <returns>All the results</returns>
-        IEnumerable<ParsedResult> Parse(string[] values);
+        public object Result { get; }
     }
 }

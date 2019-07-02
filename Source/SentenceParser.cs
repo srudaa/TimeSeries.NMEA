@@ -43,7 +43,7 @@ namespace Dolittle.TimeSeries.NMEA
         }
 
         /// <inheritdoc/>
-        public object Parse(string sentence)
+        public IEnumerable<ParsedResult> Parse(string sentence)
         {            
             ThrowIfSentenceIsInvalid(sentence);
             var originalSentence = sentence;

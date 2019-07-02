@@ -19,11 +19,30 @@ namespace Dolittle.TimeSeries.NMEA.SentenceFormats
         public string Identitifer => "RMC";
 
         /// <inheritdoc/>
-        public object Parse(IEnumerable<string> values)
+        public IEnumerable<ParsedResult> Parse(string[] values)
         {
-            var geolocation = new Geolocation();
+            var latitude = float.Parse(values[2]);
+            var longitude = float.Parse(values[4]);
+            if( values[3] == "S" ) latitude = -latitude;
+            if( values[5] == "W" ) longitude = -longitude;
 
-            return geolocation;
+            return new[] {
+                new ParsedResult("Position", new Coordinate
+                {
+                    Latitude = new Measurement<float>
+                    {
+                        Value = latitude
+                    },
+                    Longitude = new Measurement<float>
+                    {
+                        Value = longitude
+                    }
+                }),
+                new ParsedResult("Speed", new Measurement<float>
+                {
+                    Value = (float.Parse(values[6])*1852)/3600
+                })
+            };
         }
     }
 }

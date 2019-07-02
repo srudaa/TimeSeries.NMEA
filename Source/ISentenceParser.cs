@@ -3,6 +3,8 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+using System.Collections.Generic;
+
 namespace Dolittle.TimeSeries.NMEA
 {
     /// <summary>
@@ -28,7 +30,7 @@ namespace Dolittle.TimeSeries.NMEA
         /// Parse a parseable sentence into its target object
         /// </summary>
         /// <param name="sentence">Sentence to parse</param>
-        /// <returns>Instance of object that is being parsed to</returns>
-        object Parse(string sentence);
+        /// <returns>All the results parsed</returns>
+        IEnumerable<ParsedResult> Parse(string sentence);
     }
 }

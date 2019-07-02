@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System.Net.Sockets;
 using System.Text;
+using Dolittle.Collections;
 using Dolittle.Logging;
 using Dolittle.TimeSeries.Modules;
 using Dolittle.TimeSeries.Modules.Connectors;
@@ -67,9 +68,9 @@ namespace Dolittle.TimeSeries.NMEA
                                 var canParse = _parser.CanParse(sentence);
                                 if (canParse)
                                 {
-                                    var output = _parser.Parse(sentence);
                                     var identifier = _parser.GetIdentifierFor(sentence);
-                                    DataReceived(identifier, output, Timestamp.UtcNow);
+                                    var output = _parser.Parse(sentence);
+                                    output.ForEach(_ => DataReceived($"{identifier}.{_.Type}", _.Result, Timestamp.UtcNow));
                                 }
 
                                 sentenceBuilder = new StringBuilder();
