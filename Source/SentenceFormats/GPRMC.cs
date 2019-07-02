@@ -7,7 +7,7 @@ using Dolittle.TimeSeries.DataTypes;
 
 namespace Dolittle.TimeSeries.NMEA.SentenceFormats
 {
-    /// <summary>
+    /// <summary> 
     /// Represents the format of "Recommended Minimum Navigation Information"
     /// </summary>
     public class GPRMC : ISentenceFormat
@@ -38,7 +38,7 @@ namespace Dolittle.TimeSeries.NMEA.SentenceFormats
                         Value = longitude
                     }
                 }),
-                new ParsedResult("Speed", new Measurement<float>
+                new ParsedResult("SpeedOverGround", new Measurement<float>
                 {
                     Value = (float.Parse(values[6])*1852)/3600
                 })
