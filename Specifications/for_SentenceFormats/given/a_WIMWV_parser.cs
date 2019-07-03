@@ -8,12 +8,9 @@ using Machine.Specifications;
 
 namespace Dolittle.TimeSeries.NMEA.for_SentenceFormats.given
 {
-    public class a_WIMWV_parser : parsed_results
+    public class a_WIMWV_parser
     {
         protected static WIMWV parser;
-        Establish context = () =>
-        {
-            parser = new WIMWV();
-        };
+        Establish context = () => parser = new WIMWV();
     }
 }

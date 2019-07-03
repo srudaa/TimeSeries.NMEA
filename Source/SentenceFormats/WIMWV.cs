@@ -21,14 +21,17 @@ namespace Dolittle.TimeSeries.NMEA.SentenceFormats
         /// <inheritdoc/>
         public IEnumerable<ParsedResult> Parse(string[] values)
         {
-
             var windAngle = float.Parse(values[0]);
             var windSpeed = float.Parse(values[2]);
             var windAngleName = "WindAngleTrue";
-            var windUnit =  "WindSpeedTrue";
-            if( values[1] == "R" ){ windAngleName = "WindAngleRelative"; windUnit = "WindSpeedRelative";}
-            if( values[3] == "K" ) windSpeed = (windSpeed*1852)/3600;
-            if( values[3] == "N" ) windUnit="WindForce";
+            var windUnit = "WindSpeedTrue";
+            if (values[1] == "R")
+            {
+                windAngleName = "WindAngleRelative";
+                windUnit = "WindSpeedRelative";
+            }
+            if (values[3] == "K") windSpeed = (windSpeed * 1852) / 3600;
+            if (values[3] == "N") windUnit = "WindForce";
 
             return new[] {
                 new ParsedResult(windAngleName, new Measurement<float>

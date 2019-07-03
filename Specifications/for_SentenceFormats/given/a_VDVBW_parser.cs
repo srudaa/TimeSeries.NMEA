@@ -8,13 +8,9 @@ using Machine.Specifications;
 
 namespace Dolittle.TimeSeries.NMEA.for_SentenceFormats.given
 {
-    public class a_VDVBW_parser : parsed_results
+    public class a_VDVBW_parser
     {
         protected static VDVBW parser;
-        
-        Establish context = () =>
-        {
-            parser = new VDVBW();
-        };
+        Establish context = () => parser = new VDVBW();
     }
 }

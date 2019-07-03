@@ -11,15 +11,10 @@ namespace Dolittle.TimeSeries.NMEA.for_SentenceFormats.when_parsing_WIMWV
 {
     public class with_a_wind_force_sentence : given.a_WIMWV_parser
     {
-        static string[] values = new[] { "325","T","018.3","N"};
-
-
-        Because of = () => results = parser.Parse(values).ToList();
-
-        
-        It should_return_two_result = () => results.Count.ShouldEqual(2);
-
-        It should_return_a_true_wind_force = () => ShouldContainAMeasurementWithTypeAndValue<float>("WindForce", 18.3f);
-
+        static string[] values = new[] { "325", "T", "018.3", "N" };
+        static ParsedResult[] results;
+        Because of = () => results = parser.Parse(values).ToArray();
+        It should_return_two_result = () => results.Length.ShouldEqual(2);
+        It should_return_a_true_wind_speed = () => results.ShouldEmit("WindForce", 18.3f);
     }
 }

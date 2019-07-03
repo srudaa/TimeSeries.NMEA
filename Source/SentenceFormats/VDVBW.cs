@@ -16,35 +16,33 @@ namespace Dolittle.TimeSeries.NMEA.SentenceFormats
         public string Talker => "VD";
 
         /// <inheritdoc/>
-        public string Identitifer => "VBW"; 
+        public string Identitifer => "VBW";
 
         /// <inheritdoc/>
         public IEnumerable<ParsedResult> Parse(string[] values)
         {
-
             return new[] {
 
                 new ParsedResult("LongitudinalSpeedThroughWater", new Measurement<float>
                 {
                     Value = (float.Parse(values[0])*1852)/3600
-                    
+
                 }),
                 new ParsedResult("TransverseSpeedThroughWater", new Measurement<float>
                 {
                     Value = (float.Parse(values[1])*1852)/3600
-                    
+
                 }),
                 new ParsedResult("LongitudinalSpeedOverGround", new Measurement<float>
                 {
                     Value = (float.Parse(values[3])*1852)/3600
-                    
+
                 }),
                 new ParsedResult("TransverseSpeedOverGround", new Measurement<float>
                 {
                     Value = (float.Parse(values[4])*1852)/3600
-                    
+
                 })
-                
             };
         }
     }

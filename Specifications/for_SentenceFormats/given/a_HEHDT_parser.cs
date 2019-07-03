@@ -8,13 +8,9 @@ using Machine.Specifications;
 
 namespace Dolittle.TimeSeries.NMEA.for_SentenceFormats.given
 {
-    public class a_HEHDT_parser : parsed_results
+    public class a_HEHDT_parser
     {
         protected static HEHDT parser;
-        
-        Establish context = () =>
-        {
-            parser = new HEHDT();
-        };
+        Establish context = () => parser = new HEHDT();
     }
 }

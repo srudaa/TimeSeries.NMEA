@@ -21,13 +21,11 @@ namespace Dolittle.TimeSeries.NMEA.SentenceFormats
         /// <inheritdoc/>
         public IEnumerable<ParsedResult> Parse(string[] values)
         {
-
             return new[] {
                 new ParsedResult("HeadingTrue", new Measurement<float>
                 {
                     Value = float.Parse(values[0])
                 })
-
             };
         }
     }
