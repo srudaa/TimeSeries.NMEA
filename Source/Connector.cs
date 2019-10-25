@@ -62,7 +62,7 @@ namespace Dolittle.TimeSeries.NMEA
                 var started = false;
                 var skip = false;
                 var sentenceBuilder = new StringBuilder();
-                for (; ; )
+                for (;;)
                 {
                     var result = stream.ReadByte();
                     if (result == -1) break;
