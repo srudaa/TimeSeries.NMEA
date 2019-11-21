@@ -10,11 +10,9 @@ namespace Dolittle.TimeSeries.NMEA.SentenceFormats
     /// <summary> 
     /// Represents the format of "Recommended Minimum Navigation Information"
     /// </summary>
-    public class GPRMC : ISentenceFormat
+    public class RMC : ISentenceFormat
     {
-        /// <inheritdoc/>
-        public string Talker => "GP";
-
+ 
         /// <inheritdoc/>
         public string Identitifer => "RMC";
 
