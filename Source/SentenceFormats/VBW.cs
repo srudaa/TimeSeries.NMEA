@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
+using System.Linq;
 using Dolittle.TimeSeries.DataTypes;
 
 namespace Dolittle.TimeSeries.NMEA.SentenceFormats
@@ -12,27 +13,26 @@ namespace Dolittle.TimeSeries.NMEA.SentenceFormats
     /// </summary>
     public class VBW : ISentenceFormat
     {
-        /// <inheritdoc/>
-        public string Identitifer => "VBW";
-
-        /// <inheritdoc/>
-        public IEnumerable<ParsedResult> Parse(string[] values)
-        {
-            Dictionary<int, string> tags = new Dictionary<int, string>()
+        static readonly Dictionary<int, string> _tags = new Dictionary<int, string>()
                                       {
                                           {0,"LongitudinalSpeedThroughWater"},
                                           {1, "TransverseSpeedThroughWater"},
                                           {3,"LongitudinalSpeedOverGround"},
                                           {4,"TransverseSpeedOverGround"}
                                       };
+        /// <inheritdoc/>
+        public string Identitifer => "VBW";
 
-            foreach (KeyValuePair<int, string> tag in tags)
+        /// <inheritdoc/>
+        public IEnumerable<ParsedResult> Parse(string[] values)
+        {
+            foreach (var (index, name) in _tags)
             {
-                if (!string.IsNullOrEmpty(values[tag.Key]))
+                if (!string.IsNullOrEmpty(values[index]))
                 {
-                    yield return new ParsedResult(tag.Value, new Measurement<float>
+                    yield return new ParsedResult(name, new Measurement<float>
                     {
-                        Value = (float.Parse(values[tag.Key]) * 1852) / 3600
+                        Value = (float.Parse(values[index]) * 1852) / 3600
 
                     });
                 }
