@@ -35,6 +35,7 @@ RUN dotnet publish -c $CONFIGURATION -o out
 
 
 FROM base
+EXPOSE 5100/udp
 
 WORKDIR /app
 COPY --from=build-env /app/Source/out ./
